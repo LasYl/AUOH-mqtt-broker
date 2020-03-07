@@ -2,13 +2,24 @@
  
 <head>     <script type="text/javascript" src="https://unpkg.com/mqtt/dist/mqtt.min.js" ></script> </head> 
  
-<script>     let options = {         host: 'mqtt-lasyl.herokuapp.com',         port: 443,         protocol: 'wss'     };     let client = mqtt.connect(options) 
+<script>     let options = 
+        {         
+            host: 'mqtt-lasyl.herokuapp.com',        
+            port: 443,         
+            protocol: 'wss'     
+        };    
+
+let client = mqtt.connect(options) 
  
-    client.on('connect', () => {         console.log('connected');     }); 
+    client.on('connect', () => {         
+        console.log('connected');     
+    }); 
  
-    client.subscribe("test_topic"); 
+    client.subscribe("joints"); 
  
-    client.on('message', function (topic, payload) {         console.log([topic, payload].join(": "))     }); 
+    client.on('message', function (topic, payload) {         
+        console.log([topic, payload].join(": "))     
+    }); 
  
     client.publish("test_topic", "hello world!") </script> 
  
